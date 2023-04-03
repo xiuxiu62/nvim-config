@@ -2,7 +2,7 @@ local config = require("nvim-treesitter.configs")
 
 config.setup({
     -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "c", "help", "javascript", "lua", "query", "rust", "typescript", "vim" },
+    ensure_installed = { "c", "help", "javascript", "lua", "org", "query", "rust", "typescript", "vim" },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
     -- Automatically install missing parsers when entering buffer
@@ -10,5 +10,8 @@ config.setup({
     auto_install = true,
     highlight = {
         enable = true,
+        -- Required for spellcheck, some LaTex highlights and
+        -- code block highlights that do not have ts grammar
+        additional_vim_regex_highlighting = { 'org' },
     },
 })

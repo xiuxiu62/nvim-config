@@ -9,6 +9,7 @@ lsp.ensure_installed({
     "eslint",
     "lua_ls",
     "rust_analyzer",
+    "clangd"
 })
 lsp.nvim_workspace()
 neodev.setup()
@@ -68,14 +69,9 @@ lsp.format_on_save({
         ["rust_analyzer"] = { "rust" },
         ["tsserver"] = { "javascript", "typescript" },
         ["clangd"] = { "c", "cpp" },
-        ["fixjson"] = { "json" },
-        ["json-lsp"] = { "json" }
+        ["cmake-language-server"] = { "cmake" },
     }
 })
-
--- lsp.set_preferences({
---     sign_icons = {}
--- })
 
 do
     local cmp = require("cmp")

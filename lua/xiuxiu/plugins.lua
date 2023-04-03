@@ -1,10 +1,23 @@
--- Only required if you have packer configured as `opt`
-vim.cmd("packadd packer.nvim")
+local function packer_bootstrap()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
+end
 
 local packer = require("packer")
 
 local function setup(use)
-    use "wbthomason/packer.nvim"
+    use("wbthomason/packer.nvim")
+
+    if packer_bootstrap() then
+        packer.sync()
+    end
+
 
     use({
         "folke/tokyonight.nvim",
@@ -26,6 +39,15 @@ local function setup(use)
         "nvim-telescope/telescope.nvim",
         tag = "0.1.1",
         requires = { { "nvim-lua/plenary.nvim" } }
+    })
+
+    use({
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup()
+        end
     })
 
     use({
@@ -96,6 +118,8 @@ local function setup(use)
         "folke/trouble.nvim",
         requires = "nvim-tree/nvim-web-devicons",
     })
+
+    use('nvim-orgmode/orgmode')
 end
 
 return packer.startup(setup)
