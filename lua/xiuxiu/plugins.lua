@@ -37,12 +37,13 @@ local function setup(use)
 
     use({
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.1",
+        tag = "0.1.4",
         requires = { { "nvim-lua/plenary.nvim" } }
     })
 
     use({
         "folke/which-key.nvim",
+        requires = { { "echasnovski/mini.icons" } },
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
@@ -52,7 +53,7 @@ local function setup(use)
 
     use({
         "akinsho/bufferline.nvim",
-        tag = "v3.*",
+        tag = "*",
         requires = "nvim-tree/nvim-web-devicons"
     })
 
@@ -108,6 +109,8 @@ local function setup(use)
             { 'saadparwaiz1/cmp_luasnip' }, -- Optional
             { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
+            { 'MunifTanjim/prettier.nvim' },
+
             -- Snippets
             { 'L3MON4D3/LuaSnip' },             -- Required
             { 'rafamadriz/friendly-snippets' }, -- Optional
@@ -119,7 +122,8 @@ local function setup(use)
         requires = "nvim-tree/nvim-web-devicons",
     })
 
-    use('nvim-orgmode/orgmode')
+    -- use('nvim-orgmode/orgmode')
+    use("rvmelkonian/move.vim")
 end
 
 return packer.startup(setup)

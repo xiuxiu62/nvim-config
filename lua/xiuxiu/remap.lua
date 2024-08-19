@@ -1,13 +1,14 @@
-local map = require("xiuxiu.map")
+local nmap = require("xiuxiu.map").nmap
+local vmap = require("xiuxiu.map").vmap
 
 -- Ex file manager
-map("n", "<leader>fv", vim.cmd.Ex, {})
+nmap("<leader>fv", vim.cmd.Ex, {})
 
 -- Move selection
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+vmap("J", ":m '>+1<CR>gv=gv")
+vmap("K", ":m '<-2<CR>gv=gv")
 
 -- Yank to clipboard
-map("n", "<leader>y", "\"+y")
-map("v", "<leader>y", "\"+y")
-map("n", "<leader>Y", "\"+Y")
+nmap("<leader>y", "\"+y")
+vmap("<leader>y", "\"+y")
+nmap("<leader>Y", "\"+Y")

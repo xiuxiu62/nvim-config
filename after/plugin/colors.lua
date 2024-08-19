@@ -1,4 +1,4 @@
-local map = require("xiuxiu.map")
+local nmap = require("xiuxiu.map").nmap
 
 function ColorFix(color)
     color = color or "kanagawa-wave"
@@ -12,4 +12,4 @@ end
 -- Run once at startup
 ColorFix()
 
-map("n", "<leader>cf", function() vim.api.nvim_command("lua ColorFix()") end)
+nmap("<leader>cf", function() vim.api.nvim_command("lua ColorFix()") end)

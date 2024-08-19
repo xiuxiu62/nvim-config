@@ -1,3 +1,3 @@
-local map = require("xiuxiu.map")
+local nmap = require("xiuxiu.map").nmap
 
-map("n", "<leader>u", vim.cmd.UndotreeToggle)
+nmap("<leader>u", vim.cmd.UndotreeToggle)

@@ -1,56 +1,42 @@
 local which_key = require("which-key")
 
--- TODO: register at sites of mapping
-
--- Normal mode
-which_key.register({
-        a = { name = "code actions" },
-        c = {
-            name = "colorscheme",
-            f = "fix",
-        },
-        f = {
-            name = "file",
-            f = "find",
-            g = "git",
-            v = "ex",
-            s = "search",
-        },
-        h = { name = "help" },
-        k = { name = "type" },
-        o = {
-            name = "org",
-            a = "append",
-            c = "capture",
-        },
-        r = { name = "rename" },
-        u = { name = "undotree" },
-        w = {
-            name = "window",
-            h = "go left",
-            j = "go down",
-            k = "go up",
-            l = "go right",
-            H = "move left",
-            J = "move down",
-            K = "move up",
-            L = "move right",
-            s = "split",
-            v = "vsplit",
-        },
-        x = { name = "toggle diagnostics" },
-        y = { name = "clipboard <- capture" },
-        Y = { name = "line -> clipboard" },
-    },
+which_key.add({
     {
         mode = "n",
-        prefix = "<leader>",
-    })
-
--- Visual mode
-which_key.register({
-    y = { name = "selection -> clipboard" },
-}, {
-    mode = "v",
-    prefix = "<leader>",
+        { "<leader>a",  desc = "code actions" },
+        -- colorscheme
+        { "<leader>c",  group = "colorscheme" },
+        { "<leader>cf", desc = "fix" },
+        -- file
+        { "<leader>f",  group = "file" },
+        { "<leader>ff", desc = "find" },
+        { "<leader>fg", desc = "git" },
+        { "<leader>fv", desc = "ex" },
+        { "<leader>fs", desc = "search" },
+        --
+        { "<leader>h",  desc = "help" },
+        { "<leader>k",  desc = "type" },
+        { "<leader>r",  desc = "redesc" },
+        { "<leader>u",  desc = "undotree" },
+        -- window
+        { "<leader>w",  group = "window" },
+        { "<leader>wh", desc = "go left" },
+        { "<leader>wj", desc = "go down" },
+        { "<leader>wk", desc = "go up" },
+        { "<leader>wl", desc = "go right" },
+        { "<leader>wH", desc = "move left" },
+        { "<leader>wJ", desc = "move down" },
+        { "<leader>wK", desc = "move up" },
+        { "<leader>wL", desc = "move right" },
+        { "<leader>ws", desc = "split" },
+        { "<leader>wv", desc = "vsplit" },
+        --
+        { "<leader>x",  desc = "toggle diagnostics" },
+        { "<leader>y",  desc = "clipboard <- capture" },
+        { "<leader>Y",  desc = "line -> clipboard" },
+    },
+    {
+        mode = "v",
+        { "<leader>y", desc = "selection -> clipboard" },
+    }
 })

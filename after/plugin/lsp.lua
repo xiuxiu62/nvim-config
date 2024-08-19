@@ -1,11 +1,12 @@
 local lsp = require("lsp-zero")
 local neodev = require("neodev")
 local trouble = require("trouble")
-local map = require("xiuxiu.map")
+local nmap = require("xiuxiu.map").nmap
 
 lsp.preset("recommended")
 lsp.ensure_installed({
     "tsserver",
+    -- "prettier",
     "eslint",
     "lua_ls",
     "rust_analyzer",
@@ -62,14 +63,16 @@ trouble.setup({
     use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
 })
 
-
 lsp.format_on_save({
     servers = {
         ["lua_ls"] = { "lua" },
         ["rust_analyzer"] = { "rust" },
-        ["tsserver"] = { "javascript", "typescript" },
+        ["tsserver"] = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
         ["clangd"] = { "c", "cpp" },
         ["cmake-language-server"] = { "cmake" },
+        ["gopls"] = { "go" },
+        ["pylsp"] = { "python" },
+        ["terraform-ls"] = { "terraform" }
     }
 })
 
@@ -99,16 +102,16 @@ local function on_attach(client, bufnr)
         })
     end
 
-    map("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
-    map("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
-    map("n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
+    nmap("gd", "<cmd>Telescope lsp_definitions<cr>", opts)
+    nmap("gr", "<cmd>Telescope lsp_references<cr>", opts)
+    nmap("gi", "<cmd>Telescope lsp_implementations<cr>", opts)
 
-    map("n", "<leader>r", function() vim.lsp.buf.rename() end, opts)
-    map("n", "<leader>a", function() vim.lsp.buf.code_action() end, opts)
-    map("n", "<leader>k", function() vim.lsp.buf.hover() end, opts)
-    map("n", "<leader>h", diagnostic_hook, opts)
+    nmap("<leader>r", function() vim.lsp.buf.rename() end, opts)
+    nmap("<leader>a", function() vim.lsp.buf.code_action() end, opts)
+    nmap("<leader>k", function() vim.lsp.buf.hover() end, opts)
+    nmap("<leader>h", diagnostic_hook, opts)
 
-    map("n", "<leader>x", function() vim.api.nvim_command("TroubleToggle") end, opts)
+    nmap("<leader>x", function() vim.api.nvim_command("TroubleToggle") end, opts)
 end
 
 

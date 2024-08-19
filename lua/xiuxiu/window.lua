@@ -1,19 +1,19 @@
-local map = require("xiuxiu.map")
+local nmap = require("xiuxiu.map").nmap
 
 -- Split
-map("n", "<leader>ws", function() vim.api.nvim_command("split") end)
-map("n", "<leader>wv", function() vim.api.nvim_command("vsplit") end)
+nmap("<leader>ws", function() vim.api.nvim_command("split") end)
+nmap("<leader>wv", function() vim.api.nvim_command("vsplit") end)
 
 -- Goto window
-map("n", "<leader>wh", function() vim.api.nvim_command("wincmd h") end)
-map("n", "<leader>wj", function() vim.api.nvim_command("wincmd j") end)
-map("n", "<leader>wk", function() vim.api.nvim_command("wincmd k") end)
-map("n", "<leader>wl", function() vim.api.nvim_command("wincmd l") end)
+nmap("<leader>wh", function() vim.api.nvim_command("wincmd h") end)
+nmap("<leader>wj", function() vim.api.nvim_command("wincmd j") end)
+nmap("<leader>wk", function() vim.api.nvim_command("wincmd k") end)
+nmap("<leader>wl", function() vim.api.nvim_command("wincmd l") end)
 
 -- Move window
-map("n", "<leader>wH", function() vim.api.nvim_command("wincmd H") end)
-map("n", "<leader>wJ", function() vim.api.nvim_command("wincmd J") end)
-map("n", "<leader>wK", function() vim.api.nvim_command("wincmd K") end)
-map("n", "<leader>wL", function() vim.api.nvim_command("wincmd L") end)
+nmap("<leader>wH", function() vim.api.nvim_command("wincmd H") end)
+nmap("<leader>wJ", function() vim.api.nvim_command("wincmd J") end)
+nmap("<leader>wK", function() vim.api.nvim_command("wincmd K") end)
+nmap("<leader>wL", function() vim.api.nvim_command("wincmd L") end)
 
 -- Resise
